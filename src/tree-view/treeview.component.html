@@ -1,0 +1,20 @@
+<ul>
+    <li *ngFor="let node of Nodes">
+        <i class="glyphicon glyphicon-{{node.isExpanded && node.children.length>0 ? 'minus' : 'plus'}}"
+           (click)="onExpand(node)">
+        </i>
+
+        <span class="blue {{node == SelectedNode ? 'bg-info' : ''}}"
+              (click)="onSelectNode(node)">
+    {{node.name}}
+</span>
+        <span (click)="onDelete(node)" class="glyphicon glyphicon-trash" title="Delete"></span>
+
+        <tree-view [Nodes]="node.children"
+                   [SelectedNode]="SelectedNode"
+                   (onDeleteNode)="onDelete($event)"
+                   (onSelectedChanged)="onSelectNode($event)"
+                   *ngIf="node.isExpanded">
+        </tree-view>
+    </li>
+</ul>

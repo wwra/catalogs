@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Comments:</div>
+    <div class="panel-body">
+        <div *ngIf="selectedNode.comments.length>0">
+            <div class="panel panel-default" *ngFor="let item of selectedNode.comments">
+                <div class="panel-heading">
+                    <div class='pull-right'>{{ item.initDate|date:'yyyy-MM-dd' }}</div>
+                    <strong>{{ item.username }}</strong>
+                </div>
+                <div class="panel-body">{{ item.comment }}</div>
+            </div>
+        </div>
+        <form id="formComment" name="formComment" (ngSubmit)="(f.value)" #f="ngForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                       [(ngModel)]="username" required>
+            </div>
+            <div class="form-group">
+            <textarea class="form-control" rows="5" id="comment" name="comment" placeholder="Comment"
+                      [(ngModel)]="comment" required></textarea>
+            </div>
+            <button class="btn btn-success pull-right" (click)="onSave()" [disabled]="!f.valid">Save <span
+                    class="glyphicon glyphicon-send"></span></button>
+        </form>
+    </div>
+</div>

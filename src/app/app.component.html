@@ -1,0 +1,14 @@
+<section class="container">
+    <h3>QArea test task. RA</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <ra-treeblock (nodeSelected)="selectedNode = $event" [Nodes]="Nodes"></ra-treeblock>
+        </div>
+        <div class="col-md-4">
+            <ra-information [selectedNode]="selectedNode"></ra-information>
+        </div>
+        <div class="col-md-4">
+            <ra-comments [selectedNode]="selectedNode" [Nodes]="Nodes"></ra-comments>
+        </div>
+    </div>
+</section>

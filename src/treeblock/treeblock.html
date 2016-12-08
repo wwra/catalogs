@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Catalogs tree:</div>
+    <div class="panel-body">
+        <tree-view
+                [Nodes]="Nodes"
+                [SelectedNode]="selectedNode"
+                (onDeleteNode)="onDelete($event)"
+                (onSelectedChanged)="onSelectNode($event)">
+        </tree-view>
+        <form id="formTree" name="formTree" #f="ngForm">
+            <input type="text" class="form-control" name="title" placeholder="Name" [(ngModel)]="name" required><br>
+            <textarea type="text" class="form-control" name="description" placeholder="Description"
+                      [(ngModel)]="description"
+                      required></textarea><br>
+            <button (click)="onAddNode()" class="btn btn-success pull-right" [disabled]="!f.valid">Save <span
+                    class="glyphicon glyphicon-send"></span></button>
+        </form>
+    </div>
+</div>
